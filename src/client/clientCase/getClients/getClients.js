@@ -23,6 +23,28 @@ const getClients = async(req, res = response) => {
     }
 }
 
+const getClient = async(req, res = response) => {
+    const id = req.params.id;
+    try {
+        const client = await clientRepository.getOne(id);
+        if (!client) {
+            return res.status(404).json({
+                message: 'Not Found'
+            });
+        }
+        res.status(200).json({
+            message: 'Client',
+            response: client,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error interno del servidor',
+            err: error
+        });
+    }
+}
+
 module.exports = {
-    getClients
+    getClients,
+    getClient
 }

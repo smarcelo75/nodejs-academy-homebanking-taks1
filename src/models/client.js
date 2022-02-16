@@ -5,11 +5,11 @@ const clientSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    firt_name: {
+    firstName: {
         type: String,
         required: true
     },
-    last_name: {
+    lastName: {
         type: String,
         required: true
     },
