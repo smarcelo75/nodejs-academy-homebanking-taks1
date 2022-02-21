@@ -13,6 +13,10 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    accounts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'account',
+    }]
 });
 
 module.exports = mongoose.model('client', clientSchema);
