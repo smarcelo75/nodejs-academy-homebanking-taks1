@@ -6,6 +6,7 @@ const accountSchema = new Schema({
     },
     creationDate: {
         type: Date,
+        default: Date.now
     },
     balance: {
         type: Number,
@@ -13,7 +14,7 @@ const accountSchema = new Schema({
     },
     client: {
         type: Schema.Types.ObjectId,
-        ref: 'Client'
+        ref: 'client'
     }
 });
 

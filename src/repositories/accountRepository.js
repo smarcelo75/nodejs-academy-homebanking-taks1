@@ -1,4 +1,5 @@
 const Account = require('../models/account');
+const Client = require('../models/client');
 
 const getAll = async() => await Account.find();
 const getOne = async(id) => await Account.findById(id);
@@ -11,7 +12,10 @@ const save = async(body) => {
         creationDate: body.creationDate,
         client: body.client
     });
-    await account.save();
+    const accountSaved = await account.save();
+    const client = await Client.findById(accountSaved.client);
+    client.accounts.push(accountSaved._id);
+    await Client.updateOne({ _id: client._id }, { accounts: client.accounts });
     return account;
 }
 
