@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { getClients, createClient } = require('../client/clientController');
 const { getAccounts, createAccount } = require('../account/accountController');
+const { getTransactions, createTransaction } = require('../transaction/transactionController');
 
 const router = new Router();
 
@@ -11,5 +12,9 @@ router.post('/clients', createClient.createClient);
 router.get('/accounts', getAccounts.getAccounts);
 router.get('/accounts/:id', getAccounts.getAccount);
 router.post('/accounts', createAccount.createAccount);
+
+router.get('/transactions', getTransactions.getTransactions);
+router.get('/transactions/:id', getTransactions.getTransaction);
+router.post('/transactions', createTransaction.createTransaction);
 
 module.exports = router;
