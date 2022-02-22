@@ -15,7 +15,11 @@ const accountSchema = new Schema({
     client: {
         type: Schema.Types.ObjectId,
         ref: 'client'
-    }
+    },
+    transactions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'transaction'
+    }]
 });
 
 module.exports = model('account', accountSchema);
