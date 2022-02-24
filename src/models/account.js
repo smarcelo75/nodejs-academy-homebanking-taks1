@@ -18,8 +18,10 @@ const accountSchema = new Schema({
     },
     transactions: [{
         type: Schema.Types.ObjectId,
-        ref: 'transaction'
+        ref: 'transaction',
+        autopopulate: true
     }]
 });
 
+accountSchema.plugin(require('mongoose-autopopulate'));
 module.exports = model('account', accountSchema);
