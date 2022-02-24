@@ -16,7 +16,14 @@ const clientSchema = new mongoose.Schema({
     accounts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'account',
+        autopopulate: true
+    }],
+    loans: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'clientLoan',
+        autopopulate: true
     }]
 });
 
+clientSchema.plugin(require('mongoose-autopopulate'));
 module.exports = mongoose.model('client', clientSchema);

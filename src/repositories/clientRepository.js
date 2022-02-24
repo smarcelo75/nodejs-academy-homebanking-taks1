@@ -1,7 +1,7 @@
 const Client = require('../models/client');
 
-const getAll = async() => await Client.find().populate('accounts');
-const getOne = async(id) => await Client.findById(id).populate('accounts');
+const getAll = async() => await Client.find();
+const getOne = async(id) => await Client.findById(id);
 const count = async() => await Client.count();
 
 const save = async(body) => {
