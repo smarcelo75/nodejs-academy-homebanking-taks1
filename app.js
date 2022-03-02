@@ -8,9 +8,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // Importo rutas
+const authRouter = require('./src/routers/authRouter');
 const routers = require('./src/routers/routers');
+// Validación de token
+const { verifyToken } = require('./src/routers/validate-token');
 // Middleware de rutas
-app.use('/api', routers);
+app.use('/api', authRouter);
+app.use('/api', verifyToken, routers);
 
 mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(console.log('MongoDB Homebanking ONLINE'))
