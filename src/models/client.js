@@ -22,6 +22,11 @@ const clientSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'clientLoan',
         autopopulate: true
+    }],
+    cards: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'card',
+        autopopulate: true
     }]
 });
 
