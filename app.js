@@ -13,8 +13,8 @@ const routers = require('./src/routers/routers');
 // Validación de token
 const { verifyToken } = require('./src/routers/validate-token');
 // Middleware de rutas
-app.use('/api', authRouter);
-app.use('/api', verifyToken, routers);
+app.use('/api/v1', authRouter);
+app.use('/api/v1', verifyToken, routers);
 
 mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(console.log('MongoDB Homebanking ONLINE'))
